@@ -1,5 +1,6 @@
 package io.spring.finance.domain.service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -67,7 +68,7 @@ public class PaymentService implements Operations<Payment> {
 
 	@Override
 	public List<Payment> findAll() {
-		return null;
+		return new ArrayList<>();
 	}
 
 	@Override

@@ -6,10 +6,10 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.nio.charset.StandardCharsets;
 
 import org.springframework.stereotype.Service;
 
-import com.google.common.base.Charsets;
 import com.google.gson.Gson;
 
 import io.spring.finance.domain.exception.model_exception.CepNotFound;
@@ -45,7 +45,7 @@ public class CepService {
 		InputStream inputStream = null;
 		inputStream = (InputStream) connection.getContent();
 
-		InputStreamReader in = new InputStreamReader(inputStream, Charsets.UTF_8);
+		InputStreamReader in = new InputStreamReader(inputStream, StandardCharsets.UTF_8);
 		BufferedReader bufferedReader = new BufferedReader(in);
 
 		StringBuilder content = new StringBuilder("");

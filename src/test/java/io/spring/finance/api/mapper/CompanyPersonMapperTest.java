@@ -12,6 +12,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
+import io.spring.finance.MockUtils;
 import io.spring.finance.api.mapper.dto.request.CompanyPersonRequestDTO;
 import io.spring.finance.api.mapper.dto.request.ContactRequestDTO;
 import io.spring.finance.api.mapper.dto.response.CompanyPersonResponseDTO;
@@ -83,7 +84,7 @@ class CompanyPersonMapperTest {
 		assertNotNull(response, "response is null");
 		assertEquals(response.getContacts().size(), UtilsEmun.ONE.getIntValue());
 		assertNotNull(response.getContacts());
-		assertEquals(response.getId(), 1l);
+		assertEquals(response.getId(), MockUtils.getIdOne());
 		assertEquals(response.getName(), UtilsEmun.VALUE_EMPTY.getValue());
 		assertEquals(response.getDocument(), UtilsEmun.VALUE_EMPTY.getValue());
 		assertEquals(response.getCep(), UtilsEmun.VALUE_EMPTY.getValue());

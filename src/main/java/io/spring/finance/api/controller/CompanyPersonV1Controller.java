@@ -121,10 +121,7 @@ public class CompanyPersonV1Controller extends BaseController {
 	public Page<CompanyPersonResponseDTO> filterName(CompanyPersonSpecification filter, Pageable pageable) {
 
 		Page<CompanyPerson> list = service.search(filter, pageable);
-		Page<CompanyPersonResponseDTO> companyPersons = new PageImpl<>(
-				list.getContent().stream().map(x -> mapper.entityToDto(x)).collect(Collectors.toList()),
+		return new PageImpl<>(list.getContent().stream().map(x -> mapper.entityToDto(x)).collect(Collectors.toList()),
 				list.getPageable(), list.getTotalElements());
-
-		return companyPersons;
 	}
 }

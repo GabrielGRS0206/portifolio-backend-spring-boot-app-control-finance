@@ -18,9 +18,7 @@ public class DebitForPaymentRepositoryImpl implements DebitForPaymentRepositoryQ
 	public List<DebitForPayment> findAllDebitForPaymentOpen(long id) {
 
 		String sql = " SELECT c.* FROM debit_payment c " + "WHERE c.id_company = " + id + " AND c.status = 'A' ";
-
-		List<DebitForPayment> debits = jdbcTemplate.query(sql, new DebitForPaymentRowMapper());
-		return debits;
+		return jdbcTemplate.query(sql, new DebitForPaymentRowMapper());
 	}
 
 }

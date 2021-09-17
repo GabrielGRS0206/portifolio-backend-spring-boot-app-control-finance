@@ -19,6 +19,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
+import io.spring.finance.MockUtils;
 import io.spring.finance.domain.model.Contact;
 import io.spring.finance.domain.repository.ContactRepository;
 import io.spring.finance.domain.utils.UtilsEmun;
@@ -60,7 +61,7 @@ class ContactServiceTest {
 	@DisplayName("Atualiza contato")
 	void updateTest() {
 		Contact entity = mock(Contact.class);
-		service.update(entity, 1l);
+		service.update(entity, MockUtils.getIdOne());
 		verify(repository, times(1)).save(entity);
 	}
 
@@ -81,13 +82,13 @@ class ContactServiceTest {
 	void exitisByIdTest() {
 
 		Optional<Contact> optional = Optional.ofNullable(new Contact());
-		optional.get().setId(1l);
-		when(repository.findById(1l)).thenReturn(optional);
+		optional.get().setId(MockUtils.getIdOne());
+		when(repository.findById(MockUtils.getIdOne())).thenReturn(optional);
 
-		Contact entity = service.findById(1l);
+		Contact entity = service.findById(MockUtils.getIdOne());
 
 		assertNotNull(entity);
-		assertEquals(entity.getId(), 1l);
+		assertEquals(MockUtils.getIdOne(),entity.getId());
 	}
 
 	@Test
@@ -95,15 +96,15 @@ class ContactServiceTest {
 	void searchTest() {
 
 		when(repository.existsById(1l)).thenReturn(true);
-		boolean exists = service.existsById(1l);
+		boolean exists = service.existsById(MockUtils.getIdOne());
 
-		assertEquals(exists, true);
+		assertEquals(true,exists);
 	}
 
 	@Test
 	@DisplayName("Delete por id")
 	void deleteTest() {
 		service.delete(1l);
-		verify(repository, times(1)).deleteById(1l);
+		verify(repository, times(1)).deleteById(MockUtils.getIdOne());
 	}
 }

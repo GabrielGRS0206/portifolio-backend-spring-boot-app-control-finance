@@ -14,8 +14,10 @@ import io.spring.finance.domain.utils.UtilsEmun;
 
 class ContactMapperTest {
 
+	private static long ID = 1L;
 	private ContactMapper mapper = new ContactMapper();
 	private static final String VALUE_EMPTY = UtilsEmun.VALUE_EMPTY.getValue();
+
 	@Test
 	@DisplayName("Dto para entidade")
 	void mapperDtoToEntityTest() {
@@ -24,13 +26,13 @@ class ContactMapperTest {
 		request.setContactDescription(VALUE_EMPTY);
 		request.setDetail(VALUE_EMPTY);
 		request.setTypeContact(VALUE_EMPTY);
-		
+
 		Contact entity = mapper.dtoToEntity(request);
 		assertNotNull(entity, "entity is null");
-		
-		assertEquals(entity.getContactDescription(), VALUE_EMPTY);
-		assertEquals(entity.getDetail(), VALUE_EMPTY);
-		assertEquals(entity.getTypeContact(), VALUE_EMPTY);
+
+		assertEquals(VALUE_EMPTY, entity.getContactDescription());
+		assertEquals(VALUE_EMPTY, entity.getDetail());
+		assertEquals(VALUE_EMPTY, entity.getTypeContact());
 	}
 
 	@Test
@@ -45,10 +47,10 @@ class ContactMapperTest {
 		entity.setTypeContact(VALUE_EMPTY);
 		ContactResponseDTO response = mapper.entityToDto(entity);
 		assertNotNull(response, "response is null");
-		assertEquals(response.getId(), 1l);
-		assertEquals(response.getIdCompanyPerson(), 1l);
-		assertEquals(response.getContactDescription(), VALUE_EMPTY);
-		assertEquals(response.getDetail(), VALUE_EMPTY);
-		assertEquals(response.getTypeContact(), VALUE_EMPTY);
+		assertEquals(ID, response.getId());
+		assertEquals(ID, response.getIdCompanyPerson());
+		assertEquals(VALUE_EMPTY, response.getContactDescription());
+		assertEquals(VALUE_EMPTY, response.getDetail());
+		assertEquals(VALUE_EMPTY, response.getTypeContact());
 	}
 }

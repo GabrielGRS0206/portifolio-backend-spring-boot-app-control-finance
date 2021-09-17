@@ -2,7 +2,6 @@ package io.spring.finance.domain.service;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
@@ -12,7 +11,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -20,7 +18,6 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
-import io.spring.finance.domain.exception.model_exception.CompanyPersonNotFoundException;
 import io.spring.finance.domain.model.CompanyPerson;
 import io.spring.finance.domain.model.Contact;
 import io.spring.finance.domain.repository.CompanyPersonRepository;
@@ -29,6 +26,7 @@ import io.spring.finance.domain.utils.UtilsEmun;
 
 class CompanyPersonServiceTest {
 
+	private static Long ID = 1l;
 	@Mock
 	private CompanyPersonRepository repository;
 
@@ -80,7 +78,7 @@ class CompanyPersonServiceTest {
 	@DisplayName("Atualiza pessoa ou empresa")
 	void updateTest() {
 		CompanyPerson entity = companyPerson();
-		service.update(entity, 1l);
+		service.update(entity, ID);
 		verify(repository, times(1)).save(entity);
 	}
 
@@ -115,15 +113,15 @@ class CompanyPersonServiceTest {
 		CompanyPerson entity = service.findById(1l);
 
 		assertNotNull(entity);
-		assertEquals(entity.getId(), 1l);
+		assertEquals(entity.getId(), ID);
 	}
 
 	@Test
 	@DisplayName("Verifica se uma pessoa existe por id")
 	void searchTest() {
 
-		when(repository.existsById(1l)).thenReturn(true);
-		boolean exists = service.existsById(1l);
+		when(repository.existsById(ID)).thenReturn(true);
+		boolean exists = service.existsById(ID);
 
 		assertEquals(true, exists);
 	}

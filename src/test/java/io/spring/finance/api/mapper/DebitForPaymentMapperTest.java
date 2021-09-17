@@ -9,6 +9,7 @@ import java.time.LocalDate;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import io.spring.finance.MockUtils;
 import io.spring.finance.api.mapper.dto.request.DebitForPaymentRequestDTO;
 import io.spring.finance.api.mapper.dto.response.DebitForPaymentResponseDTO;
 import io.spring.finance.domain.model.CompanyPerson;
@@ -35,12 +36,12 @@ class DebitForPaymentMapperTest {
 		DebitForPayment entity = mapper.dtoToEntity(request);
 		assertNotNull(entity, "entity is null");
 
-		assertEquals(entity.getValue(), BigDecimal.ZERO);
-		assertEquals(entity.getDueDate(), LocalDate.now());
-		assertEquals(entity.getEmission(), LocalDate.now());
-		assertEquals(entity.getDescription(), VALUE_EMPTY);
-		assertEquals(entity.getObservation(), VALUE_EMPTY);
-		assertEquals(entity.getParcel(), VALUE_EMPTY);
+		assertEquals(BigDecimal.ZERO, entity.getValue());
+		assertEquals(LocalDate.now(), entity.getDueDate());
+		assertEquals(LocalDate.now(), entity.getEmission());
+		assertEquals(VALUE_EMPTY, entity.getDescription());
+		assertEquals(VALUE_EMPTY, entity.getObservation());
+		assertEquals(VALUE_EMPTY, entity.getParcel());
 	}
 
 	@Test
@@ -59,16 +60,16 @@ class DebitForPaymentMapperTest {
 		entity.setStatus(VALUE_EMPTY);
 		DebitForPaymentResponseDTO response = mapper.entityToDto(entity);
 		assertNotNull(response, "response is null");
-		assertEquals(response.getParcel(), VALUE_EMPTY);
-		assertEquals(response.getId(), 1l);
-		assertEquals(response.getValue(), BigDecimal.ZERO);
-		assertEquals(response.getDueDate(), LocalDate.now());
-		assertEquals(response.getEmission(), LocalDate.now());
-		assertEquals(response.getStatus(), VALUE_EMPTY);
-		assertEquals(response.getObservation(), VALUE_EMPTY);
-		assertEquals(response.getDescription(), VALUE_EMPTY);
-		assertEquals(response.getIdCompanyPerson(), 1l);
-		
+		assertEquals(VALUE_EMPTY, response.getParcel());
+		assertEquals(response.getId(), MockUtils.getIdOne());
+		assertEquals(BigDecimal.ZERO, response.getValue());
+		assertEquals(LocalDate.now(), response.getDueDate());
+		assertEquals(LocalDate.now(), response.getEmission());
+		assertEquals(VALUE_EMPTY, response.getStatus());
+		assertEquals(VALUE_EMPTY, response.getObservation());
+		assertEquals(VALUE_EMPTY, response.getDescription());
+		assertEquals(response.getIdCompanyPerson(), MockUtils.getIdOne());
+
 	}
 
 }
