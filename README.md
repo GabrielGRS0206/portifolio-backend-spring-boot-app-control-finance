@@ -13,7 +13,7 @@
 
 -( Projeto em desenvolvimento : Cobertura de testes atualmente = 79,3% )
 
-O projeto consiste em uma API para cadastro e controlede contas a pagar, desenvolvido totalmente com a tecnologia Java, utilizando as tecnologias acima mencionadas.
+O projeto consiste em uma API para cadastro e controle de contas a pagar, desenvolvido totalmente com a tecnologia Java, utilizando as tecnologias acima mencionadas.
 
 
 ## Configurando o projeto
