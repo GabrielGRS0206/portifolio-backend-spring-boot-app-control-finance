@@ -1,5 +1,5 @@
 
-# Projeto back-end com Spring Boot Cadastro de Contas a Pagar
+# Projeto back-end com Spring Boot Cadastro de Pessoas ou Empresa e Controle de Contas a Pagar
 
 - Spring Framework
 - Spring Boot
@@ -13,7 +13,7 @@
 
 -( Projeto em desenvolvimento : Cobertura de testes atualmente = 79,3% )
 
-O projeto consiste em uma API para cadastro de contas a pagar, desenvolvido totalmente com a tecnologia Java, utilizando as tecnologias acima mencionadas.
+O projeto consiste em uma API para cadastro e controle de contas a pagar, desenvolvido totalmente com a tecnologia Java, utilizando as tecnologias acima mencionadas.
 
 
 ## Configurando o projeto
