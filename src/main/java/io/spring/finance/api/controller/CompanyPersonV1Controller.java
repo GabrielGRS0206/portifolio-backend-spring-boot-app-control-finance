@@ -34,7 +34,7 @@ import io.swagger.annotations.ApiResponses;
 
 @RestController
 @CrossOrigin(origins = "*")
-@RequestMapping("/api/v1/people companies")
+@RequestMapping("/api/v1/people_companies")
 public class CompanyPersonV1Controller extends BaseController {
 
 	@Autowired
