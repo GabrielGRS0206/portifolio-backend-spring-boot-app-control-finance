@@ -11,7 +11,7 @@
 - JUnit5
 - Mockito
 
--( Projeto em desenvolvimento : Cobertura de testes atualmente = 79,3% )
+-( Projeto em desenvolvimento )
 
 O projeto consiste em uma API para cadastro e controle de contas a pagar, desenvolvido totalmente com a tecnologia Java, utilizando as tecnologias acima mencionadas.
 
@@ -27,9 +27,9 @@ O projeto consiste em uma API para cadastro e controle de contas a pagar, desenv
   * Altere as propriedades informado o usuário e senha do seu banco de dados: 
     - spring.datasource.username=usuario
     - spring.datasource.password=senha
-    - spring.datasource.url = jdbc:mariadb://localhost:3306/seuBancoDeDados?useSSL=false
+    - spring.datasource.url = jdbc:mysql://localhost:3306/seuBancoDeDados?useSSL=false
 4) Na classe App de um run na sua IDE.
-5) Acesse: http://localhost:8080/swagger-ui.html para visualizar os endpoints
+5) Acesse: http://localhost:8090/api/app-finance/swagger-ui.html para visualizar os endpoints
 
 
 
