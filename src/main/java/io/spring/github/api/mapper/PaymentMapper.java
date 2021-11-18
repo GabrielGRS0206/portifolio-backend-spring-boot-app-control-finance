@@ -1,39 +1,41 @@
 package io.spring.github.api.mapper;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import io.spring.github.api.mapper.dto.request.PaymentRequestDTO;
-import io.spring.github.api.mapper.dto.response.PaymentResponseDTO;
-import io.spring.github.domain.model.DebitForPayment;
+import io.spring.github.api.mapper.dto.response.DebitForPaymentResponseDTO;
+import io.spring.github.domain.model.CompanyPerson;
 import io.spring.github.domain.model.Payment;
+import io.spring.github.domain.model.StatusPayment;
 
 @Component
 public class PaymentMapper {
-	
-	@Autowired
-	private DebitForPaymentMapper mapper;
 
 	public Payment dtoToEntity(PaymentRequestDTO request) {
 		var entity = new Payment();
-		entity.setDebitForPayment(new DebitForPayment(request.getIdDebitForPayment()));
-		entity.setReceivement(request.getReceivement());
-		entity.setAmount(request.getAmount());
-		entity.setFees(request.getFees());
-		entity.setFine(request.getFine());
-		entity.setDiscount(request.getDiscount());
+		entity.setCompany(new CompanyPerson(request.getIdCompany()));
+		entity.setDescription(request.getDescription());
+		entity.setObservation(request.getObservation());
+		entity.setDueDate(request.getDueDate());
+		entity.setEmission(request.getEmission());
+		entity.setStatus(StatusPayment.OPEN.getDescription());
+		entity.setValue(request.getValue());
+		entity.setParcel(request.getParcel());
 		return entity;
 	}
 
-	public PaymentResponseDTO entityToDto(Payment entity) {
-		var response = new PaymentResponseDTO();
+	public DebitForPaymentResponseDTO entityToDto(Payment entity) {
+		var response = new DebitForPaymentResponseDTO();
 		response.setId(entity.getId());
-		response.setAmount(entity.getAmount());
-		response.setDebitForPayment(mapper.entityToDto(entity.getDebitForPayment()));
-		response.setDiscount(entity.getDiscount());
-		response.setFees(entity.getFees());
-		response.setFine(entity.getFine());
-		response.setReceivement(entity.getReceivement());
+		response.setValue(entity.getValue());
+		response.setStatus(entity.getStatus());
+		response.setParcel(entity.getParcel());
+		response.setIdCompanyPerson(entity.getCompany().getId());
+		response.setDescription(entity.getDescription());
+		response.setObservation(entity.getObservation());
+		response.setStatus(entity.getStatus());
+		response.setDueDate(entity.getDueDate());
+		response.setEmission(entity.getEmission());
 		return response;
 	}
 

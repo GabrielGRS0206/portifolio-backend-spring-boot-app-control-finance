@@ -11,7 +11,7 @@ import java.sql.SQLException;
 
 import org.junit.jupiter.api.Test;
 
-import io.spring.github.domain.model.DebitForPayment;
+import io.spring.github.domain.model.Payment;
 import io.spring.github.domain.repository.infrasctruture.repository.debit_for_payment.DebitForPaymentRowMapper;
 
 class DebitForPaymentRowMapperTest {
@@ -21,7 +21,7 @@ class DebitForPaymentRowMapperTest {
 	@Test
 	void testRowMapper() throws SQLException {
 		var result = mock(ResultSet.class);
-		DebitForPayment debit = rowMapper.mapRow(result, 0);
+		Payment debit = rowMapper.mapRow(result, 0);
 		assertNotNull(debit);
 	}
 

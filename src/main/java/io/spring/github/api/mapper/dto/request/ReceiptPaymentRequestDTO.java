@@ -10,13 +10,12 @@ import lombok.ToString;
 @Data
 @EqualsAndHashCode(callSuper = false)
 @ToString(callSuper = false)
-public class DebitForPaymentRequestDTO {
+public class ReceiptPaymentRequestDTO {
 
-	private BigDecimal value;
-	private LocalDate dueDate;
-	private LocalDate emission;
-	private Long idCompany;
-	private String description;
-	private String observation;
-	private String parcel;
+	private Long idDebitForPayment;
+	private LocalDate receivement;
+	private BigDecimal amount;
+	private BigDecimal fees;
+	private BigDecimal fine;
+	private BigDecimal discount;
 }

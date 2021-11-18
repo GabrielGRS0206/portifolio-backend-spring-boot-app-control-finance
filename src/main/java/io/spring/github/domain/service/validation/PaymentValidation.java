@@ -6,13 +6,13 @@ import org.springframework.stereotype.Component;
 
 import io.spring.github.domain.exception.business.BusinessException;
 import io.spring.github.domain.exception.business.MessageException;
-import io.spring.github.domain.repository.PaymentRepository;
+import io.spring.github.domain.repository.ReceiptPaymentRepository;
 
 @Component
 public class PaymentValidation implements Validation {
 
 	@Autowired
-	public PaymentRepository repository;
+	public ReceiptPaymentRepository repository;
 	
 	@Override
 	public void delete(Long id) {

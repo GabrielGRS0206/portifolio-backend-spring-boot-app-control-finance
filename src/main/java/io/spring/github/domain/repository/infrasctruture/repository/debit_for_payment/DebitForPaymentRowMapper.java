@@ -6,14 +6,14 @@ import java.sql.SQLException;
 import org.springframework.jdbc.core.RowMapper;
 
 import io.spring.github.domain.model.CompanyPerson;
-import io.spring.github.domain.model.DebitForPayment;
+import io.spring.github.domain.model.Payment;
 import io.spring.github.domain.utils.Utilities;
 
-public class DebitForPaymentRowMapper implements RowMapper<DebitForPayment> {
+public class DebitForPaymentRowMapper implements RowMapper<Payment> {
 
 	@Override
-	public DebitForPayment mapRow(ResultSet rs, int rowNum) throws SQLException {
-		var entity = new DebitForPayment();
+	public Payment mapRow(ResultSet rs, int rowNum) throws SQLException {
+		var entity = new Payment();
 		entity.setId(rs.getLong("id"));
 		entity.setCompany(new CompanyPerson(rs.getLong("id_company")));
 		entity.setDescription(rs.getString("description"));

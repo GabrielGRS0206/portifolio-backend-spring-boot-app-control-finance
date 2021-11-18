@@ -1,12 +1,12 @@
 package io.spring.github.domain.model;
 
-public enum StatusDebitForPayment {
+public enum StatusPayment {
 
 	SETTLED("SETTELD"), OPEN("OPEN");
 
 	private String description;
 
-	StatusDebitForPayment(String description) {
+	StatusPayment(String description) {
 		this.description = description;
 	}
 

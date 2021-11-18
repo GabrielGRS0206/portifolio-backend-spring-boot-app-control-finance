@@ -2,9 +2,9 @@ package io.spring.github.domain.repository.infrasctruture.repository.debit_for_p
 
 import java.util.List;
 
-import io.spring.github.domain.model.DebitForPayment;
+import io.spring.github.domain.model.Payment;
 
 public interface DebitForPaymentRepositoryQueries {
 	
-	List<DebitForPayment> findAllDebitForPaymentOpen(long id);
+	List<Payment> findAllDebitForPaymentOpen(long id);
 }

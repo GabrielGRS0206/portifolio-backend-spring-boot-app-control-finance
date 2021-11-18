@@ -14,12 +14,14 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
+import com.google.common.base.Strings;
+
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 
 @Entity
-@Table(name = "payment")
+@Table(name = "debit_payment")
 @Data
 @EqualsAndHashCode(callSuper = true)
 @ToString(callSuper = true)
@@ -29,23 +31,53 @@ public class Payment extends BaseEntity {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	@ManyToOne
-	@JoinColumn(name = "id_debit")
-	private DebitForPayment debitForPayment;
+	@NotNull
+	@NotBlank
+	@Column(precision = 15, scale = 2)
+	private BigDecimal value;
 
 	@NotNull
 	@NotBlank
-	private LocalDate receivement;
+	@Column(length = 5)
+	private String parcel;
 
-	@Column(precision = 15, scale = 2)
-	private BigDecimal amount;
+	@NotNull
+	@NotBlank
+	private LocalDate dueDate;
 
-	@Column(precision = 15, scale = 2)
-	private BigDecimal fees;
+	@NotNull
+	@NotBlank
+	private LocalDate emission;
 
-	@Column(precision = 15, scale = 2)
-	private BigDecimal fine;
+	@ManyToOne
+	@JoinColumn(name = "id_company")
+	private CompanyPerson company;
 
-	@Column(precision = 15, scale = 2)
-	private BigDecimal discount;
+	@Column(length = 1)
+	private String status;
+
+	@NotNull
+	@NotBlank
+	@Column(length = 120)
+	private String description;
+
+	@NotNull
+	@NotBlank
+	@Column(length = 180)
+	private String observation;
+
+	public Payment(Long id) {
+		this.id = id;
+	}
+
+	public Payment() {
+		super();
+	}
+
+	public boolean isOpen() {
+		if (!Strings.isNullOrEmpty(status) && status.equals(StatusPayment.OPEN.getDescription())) {
+			return true;
+		}
+		return false;
+	}
 }

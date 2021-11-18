@@ -13,7 +13,7 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.springframework.jdbc.core.JdbcTemplate;
 
-import io.spring.github.domain.model.DebitForPayment;
+import io.spring.github.domain.model.Payment;
 import io.spring.github.domain.repository.infrasctruture.repository.debit_for_payment.DebitForPaymentRepositoryImpl;
 import io.spring.github.domain.repository.infrasctruture.repository.debit_for_payment.DebitForPaymentRowMapper;
 import io.spring.github.domain.utils.UtilsEmun;
@@ -35,9 +35,9 @@ class DebitForPaymentRepositoryImplTest {
 	void testFindAllDebitForPaymentOpen() {
 
 		when(jdbcTemplate.query(UtilsEmun.VALUE_EMPTY.getValue(), new DebitForPaymentRowMapper()))
-				.thenReturn(Arrays.asList(new DebitForPayment()));
+				.thenReturn(Arrays.asList(new Payment()));
 
-		List<DebitForPayment> list = repositoryImpl.findAllDebitForPaymentOpen(1l);
+		List<Payment> list = repositoryImpl.findAllDebitForPaymentOpen(1l);
 		assertNotNull(list);
 	}
 

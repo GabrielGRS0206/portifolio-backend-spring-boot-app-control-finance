@@ -3,12 +3,12 @@ package io.spring.github.domain.service;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
-import java.util.Optional;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -17,13 +17,12 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
-import io.spring.github.MockUtils;
-import io.spring.github.domain.model.DebitForPayment;
+import io.spring.github.domain.model.CompanyPerson;
 import io.spring.github.domain.model.Payment;
 import io.spring.github.domain.repository.PaymentRepository;
-import io.spring.github.domain.service.DebitForPaymentService;
+import io.spring.github.domain.service.CompanyPersonService;
 import io.spring.github.domain.service.PaymentService;
-import io.spring.github.domain.service.validation.PaymentValidation;
+import io.spring.github.domain.utils.UtilsEmun;
 
 class PaymentServiceTest {
 
@@ -31,10 +30,7 @@ class PaymentServiceTest {
 	private PaymentRepository repository;
 
 	@Mock
-	private DebitForPaymentService debitForPaymentService;
-
-	@Mock
-	private PaymentValidation validation;
+	private CompanyPersonService companyPersonService;
 
 	@InjectMocks
 	private PaymentService service;
@@ -45,68 +41,72 @@ class PaymentServiceTest {
 	}
 
 	@Test
-	@DisplayName("Salva um novo pagamento")
+	@DisplayName("Salva conta a pagar")
 	void saveTest() {
 
+		when(companyPersonService.existsById(1l)).thenReturn(true);
+
 		Payment entity = new Payment();
-		entity.setDebitForPayment(new DebitForPayment(MockUtils.getIdOne()));
-		when(debitForPaymentService.findById(MockUtils.getIdOne())).thenReturn(mock(DebitForPayment.class));
+		entity.setCompany(new CompanyPerson(1l));
 
 		service.save(entity);
-		verify(debitForPaymentService, times(1)).findById(any());
-		verify(repository, times(1)).save(any());
 
-		assertNotNull(entity);
+		verify(companyPersonService, times(1)).existsById(any());
+		verify(repository, times(1)).save(any());
+		assertNotNull(entity, "entity is null");
 	}
 
 	@Test
-	@DisplayName("Salva um novo pagamento")
+	@DisplayName("Atualiza conta a pagar")
 	void updateTest() {
 
+		when(companyPersonService.existsById(1l)).thenReturn(true);
+
 		Payment entity = new Payment();
-		entity.setDebitForPayment(new DebitForPayment(1l));
-		when(debitForPaymentService.findById(MockUtils.getIdOne())).thenReturn(mock(DebitForPayment.class));
+		entity.setCompany(new CompanyPerson(1l));
 
-		service.update(entity, MockUtils.getIdOne());
+		service.update(entity, 1l);
+
+		verify(companyPersonService, times(1)).existsById(any());
 		verify(repository, times(1)).save(any());
-
-		assertNotNull(entity);
+		assertNotNull(entity, "entity is null");
 	}
 
 	@Test
-	@DisplayName("Busca por id")
-	void findByIdTest() {
+	@DisplayName("Lista de contas a pagar")
+	void findAllTest() {
 
-		Optional<Payment> optional = Optional.ofNullable(new Payment());
-		when(repository.findById(MockUtils.getIdOne())).thenReturn(optional);
+		when(repository.findAll()).thenReturn(list());
 
-		Payment payment = service.findById(MockUtils.getIdOne());
+		List<Payment> list = service.findAll();
 
-		assertNotNull(payment);
+		assertNotNull(list, "list is null");
+		assertEquals(list.size(), UtilsEmun.THREE.getIntValue());
+		verify(repository, times(1)).findAll();
 	}
 
 	@Test
-	@DisplayName("Deleta por id")
-	void deletePorIdTest() {
+	@DisplayName("Salva lista de contas a pagar")
+	void saveListTest() {
 
-		DebitForPayment debit = new DebitForPayment();
-		Optional<Payment> entity = Optional.ofNullable(new Payment());
-		entity.get().setDebitForPayment(new DebitForPayment(MockUtils.getIdOne()));
+		when(companyPersonService.existsById(any())).thenReturn(true);
+		when(repository.saveAll(any())).thenReturn(list());
 
-		when(debitForPaymentService.findById(any())).thenReturn(debit);
-		when(repository.findById(any())).thenReturn(entity);
+		List<Payment> list = service.saveList(list());
 
-		service.delete(MockUtils.getIdOne());
-
-		verify(validation, times(1)).delete(any());
-		verify(debitForPaymentService, times(1)).update(any(), any());
-		verify(debitForPaymentService, times(1)).findById(any());
+		assertNotNull(list, "list is null");
+		assertEquals(list.size(), UtilsEmun.THREE.getIntValue());
+		verify(repository, times(1)).saveAll(any());
 	}
 
-	@Test
-	@DisplayName("Verifica se existe por id")
-	void verifyForIdTest() {
-		when(repository.existsById(any())).thenReturn(true);
-		assertEquals(true,service.existsById(MockUtils.getIdOne()));
+	private List<Payment> list() {
+		List<Payment> list = new ArrayList<>();
+
+		Payment entity = new Payment();
+		entity.setCompany(new CompanyPerson(1l));
+		list.add(entity);
+		list.add(entity);
+		list.add(entity);
+		return list;
 	}
 }

@@ -10,13 +10,13 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
-import io.spring.github.domain.repository.PaymentRepository;
+import io.spring.github.domain.repository.ReceiptPaymentRepository;
 import io.spring.github.domain.service.validation.PaymentValidation;
 
 class PaymentValidationTest {
 
 	@Mock
-	private PaymentRepository repository;
+	private ReceiptPaymentRepository repository;
 
 	@InjectMocks
 	private PaymentValidation validation;

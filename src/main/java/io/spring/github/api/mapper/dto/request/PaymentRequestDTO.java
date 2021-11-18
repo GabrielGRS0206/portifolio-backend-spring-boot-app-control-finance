@@ -12,10 +12,11 @@ import lombok.ToString;
 @ToString(callSuper = false)
 public class PaymentRequestDTO {
 
-	private Long idDebitForPayment;
-	private LocalDate receivement;
-	private BigDecimal amount;
-	private BigDecimal fees;
-	private BigDecimal fine;
-	private BigDecimal discount;
+	private BigDecimal value;
+	private LocalDate dueDate;
+	private LocalDate emission;
+	private Long idCompany;
+	private String description;
+	private String observation;
+	private String parcel;
 }
