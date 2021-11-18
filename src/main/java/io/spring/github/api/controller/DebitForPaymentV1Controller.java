@@ -41,7 +41,7 @@ public class DebitForPaymentV1Controller extends BaseController {
 
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
-	@ApiOperation("Adicionar 1 conta a pagar")
+	@ApiOperation("Adicionar conta a pagar")
 	@ApiResponses(value = { @ApiResponse(code = 200, message = "Conta adicionada com sucesso"),
 			@ApiResponse(code = 401, message = "Acesso não permitido"),
 			@ApiResponse(code = 404, message = "Recurso não encontrado"),
