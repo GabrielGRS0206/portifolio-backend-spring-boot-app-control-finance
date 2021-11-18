@@ -19,7 +19,7 @@ public class SwaggerConfig {
 	public Docket docket() {
 		return new Docket(DocumentationType.SWAGGER_2)
 				.select()
-				.apis(RequestHandlerSelectors.basePackage("io.spring.finance.api.controller"))
+				.apis(RequestHandlerSelectors.basePackage("io.spring.github.api.controller"))
 				.build()
 				.apiInfo(getApiInfo());
 	}

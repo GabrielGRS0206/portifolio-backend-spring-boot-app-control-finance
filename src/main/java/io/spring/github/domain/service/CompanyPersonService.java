@@ -40,13 +40,16 @@ public class CompanyPersonService implements Operations<CompanyPerson> {
 		}
 		
 		CompanyPerson entity = repository.save(object);
-		
+		saveContacts(entity);
+
+		return entity;
+	}
+
+	private void saveContacts(CompanyPerson entity) {
 		for (Contact contact : entity.getContacts()) {
 			contact.setCompanyPerson(entity);
 			contactService.save(contact);
 		}
-
-		return entity;
 	}
 
 	@Override
