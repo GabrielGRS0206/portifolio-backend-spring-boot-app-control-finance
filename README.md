@@ -1,5 +1,6 @@
 
-# Projeto back-end com Spring Boot Cadastro de Pessoas ou Empresa e Controle de Contas a Pagar
+# Projeto back-end com Spring Boot 
+# Controle de Contas a Pagar
 
 - Spring Framework
 - Spring Boot
@@ -10,6 +11,7 @@
 - JdbcTemplate
 - JUnit5
 - Mockito
+- Lombok
 
 -( Projeto em desenvolvimento )
 
