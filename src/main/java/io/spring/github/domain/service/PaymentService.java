@@ -30,7 +30,7 @@ public class PaymentService implements Operations<Payment> {
 		return repository.save(entity);
 	}
 
-	private void verifyCompanyPersonExists(CompanyPerson company) {
+	public void verifyCompanyPersonExists(CompanyPerson company) {
 		if (!companyPersonService.existsById(company.getId())) {
 			throw new BusinessException(MessageException.COMPANY_PERSON_NOT_FOUND.getValue(),company.getId());
 		}

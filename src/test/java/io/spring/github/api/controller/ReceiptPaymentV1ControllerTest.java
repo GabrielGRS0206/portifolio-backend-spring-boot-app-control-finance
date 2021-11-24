@@ -15,7 +15,6 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.springframework.http.ResponseEntity;
 
-import io.spring.github.api.controller.ReceiptPaymentV1Controller;
 import io.spring.github.api.mapper.ReceiptPaymentMapper;
 import io.spring.github.api.mapper.dto.request.ReceiptPaymentRequestDTO;
 import io.spring.github.api.mapper.dto.response.PaymentResponseDTO;

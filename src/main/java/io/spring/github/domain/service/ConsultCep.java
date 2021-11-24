@@ -18,6 +18,7 @@ import com.google.gson.Gson;
 
 import io.spring.github.domain.exception.business.BusinessException;
 import io.spring.github.domain.model.CepResponse;
+import io.spring.github.domain.utils.Utilities;
 
 @Service
 public class ConsultCep implements ViaCEPClient {
@@ -36,18 +37,14 @@ public class ConsultCep implements ViaCEPClient {
 		}
 	}
 
-	private CepResponse requestCep(String cep) {
+	private CepResponse requestCep(String cep) throws IOException {
 		CepResponse response = null;
-		cep = removeCaracteres(cep);
-		try {
-			HttpURLConnection connection = request(cep);
+		cep = Utilities.removeCaracteres(cep);
+		HttpURLConnection connection = request(cep);
 
-			if (sucess(connection)) {
-				response = response(connection);
-			}
-
-		} catch (Exception e) {}
-
+		if (sucess(connection)) {
+			response = response(connection);
+		}
 		return response;
 	}
 
@@ -80,13 +77,6 @@ public class ConsultCep implements ViaCEPClient {
 		connection.disconnect();
 
 		return response;
-	}
-
-	public static String removeCaracteres(String value) {
-		if (value == null) {
-			return value;
-		}
-		return value.replaceAll("[^0123456789]", "");
 	}
 
 	protected boolean sucess(HttpURLConnection connection) throws IOException {

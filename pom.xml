@@ -9,10 +9,10 @@
 		<version>2.5.0</version>
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>io.spring.finance</groupId>
-	<artifactId>spring-control-finance</artifactId>
+	<groupId>io.spring.github</groupId>
+	<artifactId>spring-control-github</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>spring-control-finance</name>
+	<name>spring-control-github</name>
 	<description>Projeto para controle financeiro de contas a pagar</description>
 	<properties>
 		<java.version>11</java.version>
@@ -106,7 +106,57 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
+
+			<plugin>
+				<groupId>org.jacoco</groupId>
+				<artifactId>jacoco-maven-plugin</artifactId>
+				<version>0.8.1</version>
+				<executions>
+					<execution>
+						<id>prepare-agent</id>
+						<goals>
+							<goal>prepare-agent</goal>
+						</goals>
+					</execution>
+					<execution>
+						<id>report</id>
+						<phase>prepare-package</phase>
+						<goals>
+							<goal>report</goal>
+						</goals>
+						<configuration>
+							<!-- Sets the path to the file which contains the execution data. -->
+							<dataFile>target/jacoco.exec</dataFile>
+							<!-- Sets the output directory for the code coverage report. -->
+							<outputDirectory>target/jacoco-ut</outputDirectory>
+						</configuration>
+					</execution>
+				</executions>
+				<configuration>
+					<systemPropertyVariables>
+						<jacoco-agent.destfile>target/jacoco.exec</jacoco-agent.destfile>
+					</systemPropertyVariables>
+					<excludes>
+						<exclude>io/spring/github/api/config/**/*</exclude>
+						<exclude>io/spring/github/App.class</exclude>
+					</excludes>
+				</configuration>
+			</plugin>
 		</plugins>
 	</build>
+	
+	<reporting>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-javadoc-plugin</artifactId>
+				<version>3.1.1</version>
+				<configuration>
+					<stylesheetfile>${basedir}/src/main/javadoc/stylesheet.css</stylesheetfile>
+					<show>public</show>
+				</configuration>
+			</plugin>
+		</plugins>
+	</reporting>
 
 </project>

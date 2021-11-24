@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -20,6 +21,7 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
 import io.spring.github.MockUtils;
+import io.spring.github.domain.exception.business.BusinessException;
 import io.spring.github.domain.model.Contact;
 import io.spring.github.domain.repository.ContactRepository;
 import io.spring.github.domain.service.ContactService;
@@ -107,5 +109,12 @@ class ContactServiceTest {
 	void deleteTest() {
 		service.delete(1l);
 		verify(repository, times(1)).deleteById(MockUtils.getIdOne());
+	}
+
+	@Test
+	void testFindByThrows() {
+		Assertions.assertThrows(BusinessException.class, () ->{
+			service.findById(1l);
+		});
 	}
 }

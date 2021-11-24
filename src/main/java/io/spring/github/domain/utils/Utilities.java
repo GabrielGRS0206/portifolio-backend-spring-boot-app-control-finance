@@ -3,6 +3,10 @@ package io.spring.github.domain.utils;
 import java.sql.Date;
 import java.time.LocalDate;
 
+import com.google.common.base.Strings;
+
+import io.spring.github.domain.exception.business.BusinessException;
+
 public class Utilities {
 
 	/**
@@ -12,10 +16,11 @@ public class Utilities {
 	 * @return value sem caracteress
 	 */
 	public static String removeCaracteres(String value) {
-		if (value == null) {
-			return value;
-		}
+		if(!Strings.isNullOrEmpty(value)) {
 		return value.replaceAll("[^0123456789]", "");
+		} else {
+			throw new BusinessException("Valor nulo");
+		}
 	}
 
 	public static String replic(String value, int x) {

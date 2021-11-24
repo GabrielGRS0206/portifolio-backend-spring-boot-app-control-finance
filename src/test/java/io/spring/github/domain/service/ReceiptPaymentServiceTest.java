@@ -8,21 +8,22 @@ import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.Optional;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
 import io.spring.github.MockUtils;
+import io.spring.github.domain.exception.business.BusinessException;
 import io.spring.github.domain.model.Payment;
 import io.spring.github.domain.model.ReceiptPayment;
 import io.spring.github.domain.repository.ReceiptPaymentRepository;
-import io.spring.github.domain.service.PaymentService;
-import io.spring.github.domain.service.ReceiptPaymentService;
 import io.spring.github.domain.service.validation.PaymentValidation;
 
 class ReceiptPaymentServiceTest {
@@ -45,7 +46,6 @@ class ReceiptPaymentServiceTest {
 	}
 
 	@Test
-	@DisplayName("Salva um novo pagamento")
 	void saveTest() {
 
 		ReceiptPayment entity = new ReceiptPayment();
@@ -60,7 +60,6 @@ class ReceiptPaymentServiceTest {
 	}
 
 	@Test
-	@DisplayName("Salva um novo pagamento")
 	void updateTest() {
 
 		ReceiptPayment entity = new ReceiptPayment();
@@ -74,7 +73,6 @@ class ReceiptPaymentServiceTest {
 	}
 
 	@Test
-	@DisplayName("Busca por id")
 	void findByIdTest() {
 
 		Optional<ReceiptPayment> optional = Optional.ofNullable(new ReceiptPayment());
@@ -86,7 +84,13 @@ class ReceiptPaymentServiceTest {
 	}
 
 	@Test
-	@DisplayName("Deleta por id")
+	void findByIdTestThrows() {
+		Assertions.assertThrows(BusinessException.class, () ->{
+			service.findById(1l);
+		});
+	}
+	
+	@Test
 	void deletePorIdTest() {
 
 		Payment debit = new Payment();
@@ -104,9 +108,15 @@ class ReceiptPaymentServiceTest {
 	}
 
 	@Test
-	@DisplayName("Verifica se existe por id")
 	void verifyForIdTest() {
 		when(repository.existsById(any())).thenReturn(true);
 		assertEquals(true,service.existsById(MockUtils.getIdOne()));
+	}
+	
+	@Test
+	void testFindAll() {
+		when(repository.findAll()).thenReturn(Arrays.asList(new ReceiptPayment()));
+		List<ReceiptPayment> list = service.findAll();
+		assertNotNull(list,"list is null");
 	}
 }

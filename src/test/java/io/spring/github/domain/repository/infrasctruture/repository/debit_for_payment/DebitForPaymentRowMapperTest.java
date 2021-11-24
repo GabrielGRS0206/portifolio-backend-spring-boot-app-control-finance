@@ -12,7 +12,6 @@ import java.sql.SQLException;
 import org.junit.jupiter.api.Test;
 
 import io.spring.github.domain.model.Payment;
-import io.spring.github.domain.repository.infrasctruture.repository.debit_for_payment.DebitForPaymentRowMapper;
 
 class DebitForPaymentRowMapperTest {
 

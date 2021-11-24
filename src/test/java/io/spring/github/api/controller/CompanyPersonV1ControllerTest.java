@@ -12,22 +12,17 @@ import java.util.Arrays;
 import java.util.List;
 
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 
-import io.spring.github.api.controller.CompanyPersonV1Controller;
 import io.spring.github.api.mapper.CompanyPersonMapper;
 import io.spring.github.api.mapper.dto.request.CompanyPersonRequestDTO;
 import io.spring.github.api.mapper.dto.response.CompanyPersonResponseDTO;
 import io.spring.github.domain.model.CompanyPerson;
 import io.spring.github.domain.service.CompanyPersonService;
-import io.spring.github.domain.specification.CompanyPersonSpecification;
 import io.spring.github.domain.utils.UtilsEmun;
 
 class CompanyPersonV1ControllerTest {
@@ -47,7 +42,6 @@ class CompanyPersonV1ControllerTest {
 	}
 
 	@Test
-	@DisplayName("Salva pessoa ou empresa")
 	void saveTest() {
 
 		when(mapper.dtoToEntity(mock(CompanyPersonRequestDTO.class))).thenReturn(mock(CompanyPerson.class));
@@ -64,7 +58,6 @@ class CompanyPersonV1ControllerTest {
 	}
 
 	@Test
-	@DisplayName("Atualiza pessoa ou empresa")
 	void updateTest() {
 
 		when(mapper.dtoToEntity(mock(CompanyPersonRequestDTO.class))).thenReturn(mock(CompanyPerson.class));
@@ -81,7 +74,6 @@ class CompanyPersonV1ControllerTest {
 	}
 
 	@Test
-	@DisplayName("Listar pessoas e empresas")
 	void findAllTest() {
 
 		when(mapper.entityToDto(mock(CompanyPerson.class))).thenReturn(mock(CompanyPersonResponseDTO.class));
@@ -98,7 +90,6 @@ class CompanyPersonV1ControllerTest {
 	}
 
 	@Test
-	@DisplayName("Consultar por documento")
 	void findByDocumentTest() {
 
 		when(mapper.entityToDto(mock(CompanyPerson.class))).thenReturn(mock(CompanyPersonResponseDTO.class));
@@ -113,7 +104,6 @@ class CompanyPersonV1ControllerTest {
 	}
 
 	@Test
-	@DisplayName("Consultar por id")
 	void findByIdTest() {
 
 		when(mapper.entityToDto(mock(CompanyPerson.class))).thenReturn(mock(CompanyPersonResponseDTO.class));
@@ -128,10 +118,8 @@ class CompanyPersonV1ControllerTest {
 	}
 
 	@Test
-	@DisplayName("Deleta pessoa ou empresa")
 	void deleteTest() {
 		controller.delete(1l);
 		verify(service, times(1)).delete(any());
 	}
-
 }

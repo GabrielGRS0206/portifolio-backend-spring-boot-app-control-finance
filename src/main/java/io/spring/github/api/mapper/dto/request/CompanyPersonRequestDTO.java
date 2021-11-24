@@ -7,8 +7,6 @@ import lombok.EqualsAndHashCode;
 import lombok.ToString;
 
 @Data
-@EqualsAndHashCode(callSuper = false)
-@ToString(callSuper = false)
 public class CompanyPersonRequestDTO {
 
 	private String name;

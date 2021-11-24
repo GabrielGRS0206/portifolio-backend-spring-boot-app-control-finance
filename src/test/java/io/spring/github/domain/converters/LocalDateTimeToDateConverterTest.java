@@ -9,8 +9,6 @@ import java.time.LocalDateTime;
 
 import org.junit.jupiter.api.Test;
 
-import io.spring.github.domain.converters.LocalDateTimeToDateConverter;
-
 class LocalDateTimeToDateConverterTest {
 
 	private LocalDateTimeToDateConverter converter = new LocalDateTimeToDateConverter();

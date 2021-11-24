@@ -11,18 +11,17 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
+import io.spring.github.domain.exception.business.BusinessException;
 import io.spring.github.domain.model.CompanyPerson;
 import io.spring.github.domain.model.Contact;
 import io.spring.github.domain.repository.CompanyPersonRepository;
-import io.spring.github.domain.service.CompanyPersonService;
-import io.spring.github.domain.service.ContactService;
 import io.spring.github.domain.service.validation.CompanyPersonValidation;
 import io.spring.github.domain.utils.UtilsEmun;
 
@@ -49,7 +48,6 @@ class CompanyPersonServiceTest {
 	}
 
 	@Test
-	@DisplayName("Salva uma nova pessoa ou empresa")
 	void saveTest() {
 
 		CompanyPerson entity = companyPerson();
@@ -77,7 +75,6 @@ class CompanyPersonServiceTest {
 	}
 
 	@Test
-	@DisplayName("Atualiza pessoa ou empresa")
 	void updateTest() {
 		CompanyPerson entity = companyPerson();
 		service.update(entity, ID);
@@ -85,7 +82,6 @@ class CompanyPersonServiceTest {
 	}
 
 	@Test
-	@DisplayName("Busca uma lista de pessoa ou empresa")
 	void findAll() {
 
 		when(repository.findAll()).thenReturn(companyPersons());
@@ -105,7 +101,6 @@ class CompanyPersonServiceTest {
 	}
 
 	@Test
-	@DisplayName("Consulta uma pessoa existe por id")
 	void exitisByIdTest() {
 
 		Optional<CompanyPerson> optional = Optional.ofNullable(new CompanyPerson());
@@ -119,7 +114,6 @@ class CompanyPersonServiceTest {
 	}
 
 	@Test
-	@DisplayName("Verifica se uma pessoa existe por id")
 	void searchTest() {
 
 		when(repository.existsById(ID)).thenReturn(true);
@@ -129,7 +123,6 @@ class CompanyPersonServiceTest {
 	}
 
 	@Test
-	@DisplayName("Verifica se uma pessoa existe por um documento")
 	void findByDocumentTest() {
 
 		Optional<CompanyPerson> optional = Optional.ofNullable(new CompanyPerson());
@@ -139,5 +132,23 @@ class CompanyPersonServiceTest {
 		assertNotNull(entity);
 		verify(repository, times(1)).findByDocument(any());
 	}
+	
+	@Test
+	void findByDocumentTestThrows() {
 
+//		Mockito.doThrow(new BusinessException("")).when(repository).findByDocument(CPF);
+		when(repository.findByDocument(CPF)).thenReturn(Optional.empty());
+		
+		Assertions.assertThrows(BusinessException.class, () -> {
+			service.findByDocument(CPF);
+		});
+		verify(repository, times(1)).findByDocument(any());
+		
+	}
+	
+	@Test
+	void testDelete() {
+		service.delete(1l);
+		verify(repository, times(0)).deleteById(1l);
+	}
 }

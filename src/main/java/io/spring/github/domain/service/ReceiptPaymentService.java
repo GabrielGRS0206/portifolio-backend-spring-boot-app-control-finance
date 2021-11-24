@@ -1,6 +1,5 @@
 package io.spring.github.domain.service;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -69,7 +68,7 @@ public class ReceiptPaymentService implements Operations<ReceiptPayment> {
 
 	@Override
 	public List<ReceiptPayment> findAll() {
-		return new ArrayList<>();
+		return repository.findAll();
 	}
 
 	@Override

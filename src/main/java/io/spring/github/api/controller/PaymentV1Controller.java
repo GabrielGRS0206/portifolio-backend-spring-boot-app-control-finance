@@ -70,7 +70,7 @@ public class PaymentV1Controller extends BaseController {
 
 	@GetMapping("/{id}")
 	@ResponseStatus(HttpStatus.OK)
-	@ApiOperation("Consultar conta a pagar por id")
+	@ApiOperation("Consultar contas a pagar por id de Pessoa")
 	@ApiResponses(value = { @ApiResponse(code = 200, message = "Conta adicionada com sucesso"),
 			@ApiResponse(code = 401, message = "Acesso não permitido"),
 			@ApiResponse(code = 404, message = "Recurso não encontrado"),
