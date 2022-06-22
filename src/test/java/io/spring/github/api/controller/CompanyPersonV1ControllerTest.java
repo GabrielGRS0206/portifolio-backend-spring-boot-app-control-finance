@@ -19,8 +19,8 @@ import org.mockito.MockitoAnnotations;
 import org.springframework.http.ResponseEntity;
 
 import io.spring.github.api.mapper.CompanyPersonMapper;
-import io.spring.github.api.mapper.dto.request.CompanyPersonRequestDTO;
-import io.spring.github.api.mapper.dto.response.CompanyPersonResponseDTO;
+import io.spring.github.api.dto.request.CompanyPersonRequestDTO;
+import io.spring.github.api.dto.response.CompanyPersonResponseDTO;
 import io.spring.github.domain.model.CompanyPerson;
 import io.spring.github.domain.service.CompanyPersonService;
 import io.spring.github.domain.utils.UtilsEmun;

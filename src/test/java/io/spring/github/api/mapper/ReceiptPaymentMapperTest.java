@@ -6,20 +6,15 @@ import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
-import java.math.BigDecimal;
-import java.time.LocalDate;
-
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
-import io.spring.github.api.mapper.dto.request.ReceiptPaymentRequestDTO;
-import io.spring.github.api.mapper.dto.response.DebitForPaymentResponseDTO;
-import io.spring.github.api.mapper.dto.response.PaymentResponseDTO;
-import io.spring.github.domain.model.Payment;
+import io.spring.github.api.dto.request.ReceiptPaymentRequestDTO;
+import io.spring.github.api.dto.response.DebitForPaymentResponseDTO;
+import io.spring.github.api.dto.response.PaymentResponseDTO;
 import io.spring.github.domain.model.ReceiptPayment;
 
 class ReceiptPaymentMapperTest {

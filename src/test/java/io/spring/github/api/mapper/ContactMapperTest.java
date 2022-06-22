@@ -6,9 +6,8 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import io.spring.github.api.mapper.ContactMapper;
-import io.spring.github.api.mapper.dto.request.ContactRequestDTO;
-import io.spring.github.api.mapper.dto.response.ContactResponseDTO;
+import io.spring.github.api.dto.request.ContactRequestDTO;
+import io.spring.github.api.dto.response.ContactResponseDTO;
 import io.spring.github.domain.model.CompanyPerson;
 import io.spring.github.domain.model.Contact;
 import io.spring.github.domain.utils.UtilsEmun;

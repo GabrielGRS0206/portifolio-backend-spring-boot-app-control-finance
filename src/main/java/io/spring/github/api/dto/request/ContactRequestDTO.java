@@ -1,4 +1,4 @@
-package io.spring.github.api.mapper.dto.request;
+package io.spring.github.api.dto.request;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;

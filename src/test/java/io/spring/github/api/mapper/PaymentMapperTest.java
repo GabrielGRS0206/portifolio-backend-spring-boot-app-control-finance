@@ -4,8 +4,8 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import org.junit.jupiter.api.Test;
 
-import io.spring.github.api.mapper.dto.request.PaymentRequestDTO;
-import io.spring.github.api.mapper.dto.response.DebitForPaymentResponseDTO;
+import io.spring.github.api.dto.request.PaymentRequestDTO;
+import io.spring.github.api.dto.response.DebitForPaymentResponseDTO;
 import io.spring.github.domain.model.CompanyPerson;
 import io.spring.github.domain.model.Payment;
 

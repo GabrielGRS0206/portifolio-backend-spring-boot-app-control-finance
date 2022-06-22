@@ -1,4 +1,4 @@
-package io.spring.github.api.mapper.dto.request;
+package io.spring.github.api.dto.response;
 
 import java.util.List;
 
@@ -7,14 +7,17 @@ import lombok.EqualsAndHashCode;
 import lombok.ToString;
 
 @Data
-public class CompanyPersonRequestDTO {
+@EqualsAndHashCode(callSuper = false)
+@ToString(callSuper = false)
+public class CompanyPersonResponseDTO {
 
+	private Long id;
 	private String name;
 	private String document;
 	private String typePerson;
+	private List<ContactResponseDTO> contacts;
 	private String cep;
 	private String district;
 	private String street;
 	private String city;
-	private List<ContactRequestDTO> contacts;
 }

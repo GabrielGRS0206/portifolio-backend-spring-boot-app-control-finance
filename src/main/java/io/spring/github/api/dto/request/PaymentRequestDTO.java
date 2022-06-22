@@ -1,4 +1,4 @@
-package io.spring.github.api.mapper.dto.response;
+package io.spring.github.api.dto.request;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -10,14 +10,12 @@ import lombok.ToString;
 @Data
 @EqualsAndHashCode(callSuper = false)
 @ToString(callSuper = false)
-public class DebitForPaymentResponseDTO {
+public class PaymentRequestDTO {
 
-	private Long id;
 	private BigDecimal value;
 	private LocalDate dueDate;
 	private LocalDate emission;
-	private Long idCompanyPerson;
-	private String status;
+	private Long idCompany;
 	private String description;
 	private String observation;
 	private String parcel;

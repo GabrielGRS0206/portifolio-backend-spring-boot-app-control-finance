@@ -11,9 +11,9 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
-import io.spring.github.api.mapper.dto.request.CompanyPersonRequestDTO;
-import io.spring.github.api.mapper.dto.request.ContactRequestDTO;
-import io.spring.github.api.mapper.dto.response.CompanyPersonResponseDTO;
+import io.spring.github.api.dto.request.CompanyPersonRequestDTO;
+import io.spring.github.api.dto.request.ContactRequestDTO;
+import io.spring.github.api.dto.response.CompanyPersonResponseDTO;
 import io.spring.github.domain.exception.business.DtoInvalidException;
 import io.spring.github.domain.model.CompanyPerson;
 import io.spring.github.domain.model.Contact;

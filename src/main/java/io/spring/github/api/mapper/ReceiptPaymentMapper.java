@@ -3,8 +3,8 @@ package io.spring.github.api.mapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import io.spring.github.api.mapper.dto.request.ReceiptPaymentRequestDTO;
-import io.spring.github.api.mapper.dto.response.PaymentResponseDTO;
+import io.spring.github.api.dto.request.ReceiptPaymentRequestDTO;
+import io.spring.github.api.dto.response.PaymentResponseDTO;
 import io.spring.github.domain.model.Payment;
 import io.spring.github.domain.model.ReceiptPayment;
 

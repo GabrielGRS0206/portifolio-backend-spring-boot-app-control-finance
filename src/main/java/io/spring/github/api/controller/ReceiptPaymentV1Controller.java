@@ -16,8 +16,8 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import io.spring.github.api.mapper.ReceiptPaymentMapper;
-import io.spring.github.api.mapper.dto.request.ReceiptPaymentRequestDTO;
-import io.spring.github.api.mapper.dto.response.PaymentResponseDTO;
+import io.spring.github.api.dto.request.ReceiptPaymentRequestDTO;
+import io.spring.github.api.dto.response.PaymentResponseDTO;
 import io.spring.github.domain.model.ReceiptPayment;
 import io.spring.github.domain.service.ReceiptPaymentService;
 import io.swagger.annotations.ApiOperation;

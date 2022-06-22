@@ -6,10 +6,10 @@ import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import io.spring.github.api.mapper.dto.request.CompanyPersonRequestDTO;
-import io.spring.github.api.mapper.dto.request.ContactRequestDTO;
-import io.spring.github.api.mapper.dto.response.CompanyPersonResponseDTO;
-import io.spring.github.api.mapper.dto.response.ContactResponseDTO;
+import io.spring.github.api.dto.request.CompanyPersonRequestDTO;
+import io.spring.github.api.dto.request.ContactRequestDTO;
+import io.spring.github.api.dto.response.CompanyPersonResponseDTO;
+import io.spring.github.api.dto.response.ContactResponseDTO;
 import io.spring.github.domain.model.CompanyPerson;
 import io.spring.github.domain.model.Contact;
 

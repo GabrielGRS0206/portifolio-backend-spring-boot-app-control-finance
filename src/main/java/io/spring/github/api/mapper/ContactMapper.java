@@ -2,8 +2,8 @@ package io.spring.github.api.mapper;
 
 import org.springframework.stereotype.Component;
 
-import io.spring.github.api.mapper.dto.request.ContactRequestDTO;
-import io.spring.github.api.mapper.dto.response.ContactResponseDTO;
+import io.spring.github.api.dto.request.ContactRequestDTO;
+import io.spring.github.api.dto.response.ContactResponseDTO;
 import io.spring.github.domain.model.Contact;
 
 @Component

@@ -13,7 +13,7 @@ import org.mockito.MockitoAnnotations;
 import org.springframework.http.ResponseEntity;
 
 import io.spring.github.api.mapper.CepMapper;
-import io.spring.github.api.mapper.dto.response.CepResponseDTO;
+import io.spring.github.api.dto.response.CepResponseDTO;
 import io.spring.github.domain.model.CepResponse;
 import io.spring.github.domain.service.CepService;
 import io.spring.github.domain.utils.UtilsEmun;

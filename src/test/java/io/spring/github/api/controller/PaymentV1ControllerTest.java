@@ -20,8 +20,8 @@ import org.springframework.http.ResponseEntity;
 
 import io.spring.github.MockUtils;
 import io.spring.github.api.mapper.PaymentMapper;
-import io.spring.github.api.mapper.dto.request.PaymentRequestDTO;
-import io.spring.github.api.mapper.dto.response.DebitForPaymentResponseDTO;
+import io.spring.github.api.dto.request.PaymentRequestDTO;
+import io.spring.github.api.dto.response.DebitForPaymentResponseDTO;
 import io.spring.github.domain.model.Payment;
 import io.spring.github.domain.service.PaymentService;
 
