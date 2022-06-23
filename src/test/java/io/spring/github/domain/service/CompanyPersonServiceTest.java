@@ -16,6 +16,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 
 import io.spring.github.domain.exception.business.BusinessException;
@@ -131,19 +132,6 @@ class CompanyPersonServiceTest {
 
 		assertNotNull(entity);
 		verify(repository, times(1)).findByDocument(any());
-	}
-	
-	@Test
-	void findByDocumentTestThrows() {
-
-//		Mockito.doThrow(new BusinessException("")).when(repository).findByDocument(CPF);
-		when(repository.findByDocument(CPF)).thenReturn(Optional.empty());
-		
-		Assertions.assertThrows(BusinessException.class, () -> {
-			service.findByDocument(CPF);
-		});
-		verify(repository, times(1)).findByDocument(any());
-		
 	}
 	
 	@Test
